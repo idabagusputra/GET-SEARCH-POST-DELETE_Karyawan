@@ -19,5 +19,12 @@ class KaryawanSeeder extends Seeder
             'pendidikan_terakhir' => 'SMAN Madani Palu',
             'jabatan_posisi' => 'Pelajar',
         ]);
+
+        Karyawan::updateOrCreate([
+            'nik' => '21120120140109',
+            'nama_lengkap' => 'Ida Ardianingsih',
+            'pendidikan_terakhir' => 'SMAN Madani Palu',
+            'jabatan_posisi' => 'Pelajar',
+        ]);
     }
 }

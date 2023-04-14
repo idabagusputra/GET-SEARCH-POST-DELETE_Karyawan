@@ -14,9 +14,7 @@ use App\Http\Controllers\KaryawanController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [KaryawanController::class, 'getAllKaryawan'])->name('karyawan.index');
 
 Route::get('/karyawan', [KaryawanController::class, 'getAllKaryawan'])->name('karyawan.index');
 Route::post('/karyawan', [KaryawanController::class, 'addKaryawan']);
