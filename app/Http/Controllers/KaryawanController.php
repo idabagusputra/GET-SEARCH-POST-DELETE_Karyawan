@@ -46,6 +46,39 @@ class KaryawanController extends Controller
         return view('detail_karyawan', compact('karyawans'));
     }
 
+    public function showUpdateForm($id)
+    {
+        $karyawan = DB::table('karyawans')->where('id', $id)->first();
+
+        if ($karyawan) {
+            return view('update_karyawan', compact('karyawan'));
+        } else {
+            return redirect()->route('karyawan.index')->with('error', 'Karyawan tidak ditemukan');
+        }
+    }
+
+    public function updateKaryawan(Request $request, $id)
+        {
+            $nik = $request->input('nik');
+            $nama_lengkap = $request->input('nama_lengkap');
+            $pendidikan_terakhir = $request->input('pendidikan_terakhir');
+            $jabatan_posisi = $request->input('jabatan_posisi');
+
+            $affectedRows = DB::table('karyawans')
+                            ->where('id', $id)
+                            ->update([
+                                'nik' => $nik,
+                                'nama_lengkap' => $nama_lengkap,
+                                'pendidikan_terakhir' => $pendidikan_terakhir,
+                                'jabatan_posisi' => $jabatan_posisi
+                            ]);
+
+            if ($affectedRows > 0) {
+                return redirect()->route('karyawan.index')->with('success', 'Karyawan berhasil diperbarui');
+            } else {
+                return redirect()->route('karyawan.index')->with('error', 'Karyawan tidak ditemukan');
+            }
+        }
 
     public function deleteKaryawan($id)
     {

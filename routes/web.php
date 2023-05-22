@@ -20,4 +20,8 @@ Route::get('/karyawan', [KaryawanController::class, 'getAllKaryawan'])->name('ka
 Route::post('/karyawan', [KaryawanController::class, 'addKaryawan']);
 Route::post('/search', [KaryawanController::class, 'searchKaryawan'])->name('karyawan.search');
 Route::delete('/karyawan/{id}', [KaryawanController::class, 'deleteKaryawan'])->name('karyawan.delete');
+Route::put('/karyawan/update/{id}', [KaryawanController::class, 'updateKaryawan'])->name('karyawan.update');
+Route::get('/karyawan/edit/{id}', [KaryawanController::class, 'showUpdateForm'])->name('karyawan.edit');
+Route::put('/karyawan/update/{id}', [KaryawanController::class, 'updateKaryawan'])->name('karyawan.update');
+
 
